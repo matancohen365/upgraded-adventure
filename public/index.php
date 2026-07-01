@@ -38,7 +38,7 @@
     --ink: #10182B;
     --slate: #5B6478;
     --slate-light: #9AA5BC;
-    --amber: #D9A441;
+    --amber: #1877F2;
     --amber-bright: #F0C878;
     --amber-deep: #A9761F;
     --line-dark: rgba(255,255,255,0.09);
@@ -419,8 +419,8 @@
     <a href="#" class="logo" aria-label="HDG – דף הבית">
       <svg class="logo-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <rect x="1" y="1" width="30" height="30" rx="8" stroke="#fff" stroke-opacity="0.25" stroke-width="1.4"/>
-        <path d="M8 21L14.5 13L18.5 16.5L23 9.5" stroke="#D9A441" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M17.5 9H23V14.5" stroke="#D9A441" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8 21L14.5 13L18.5 16.5L23 9.5" stroke="#1877F2" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M17.5 9H23V14.5" stroke="#1877F2" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       <span class="logo-word">HDG</span>
     </a>
@@ -473,8 +473,8 @@
           <svg class="chart-svg" viewBox="0 0 560 260" id="heroChart" aria-hidden="true">
             <defs>
               <linearGradient id="areaFade" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#D9A441" stop-opacity="0.28"/>
-                <stop offset="100%" stop-color="#D9A441" stop-opacity="0"/>
+                <stop offset="0%" stop-color="#1877F2" stop-opacity="0.28"/>
+                <stop offset="100%" stop-color="#1877F2" stop-opacity="0"/>
               </linearGradient>
             </defs>
             <path class="chart-area" d="M20,230 L70,214 L140,196 L210,204 L280,162 L350,142 L420,106 L490,80 L540,44 L540,260 L20,260 Z" fill="url(#areaFade)"/>
@@ -678,8 +678,8 @@
         <div class="logo">
           <svg class="logo-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <rect x="1" y="1" width="30" height="30" rx="8" stroke="#fff" stroke-opacity="0.25" stroke-width="1.4"/>
-            <path d="M8 21L14.5 13L18.5 16.5L23 9.5" stroke="#D9A441" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M17.5 9H23V14.5" stroke="#D9A441" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 21L14.5 13L18.5 16.5L23 9.5" stroke="#1877F2" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M17.5 9H23V14.5" stroke="#1877F2" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           <span class="logo-word">HDG</span>
         </div>
