@@ -1577,6 +1577,8 @@ document.addEventListener('DOMContentLoaded', function () {
           alert(result.body.message || 'אירעה שגיאה בשמירת ההרשמה. נסו שוב.');
           return;
         }
+		
+		fbq('track', 'CompleteRegistration');
 
         loaderProgressDesc.textContent = "מנתח את פרטי העסק ומייצר מילות מפתח ממוקדות...";
 
