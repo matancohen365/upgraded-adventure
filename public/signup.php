@@ -324,7 +324,7 @@
   .card-signature { width: 70%; height: 32px; background: #fff; border-radius: 4px; display: flex; align-items: center; justify-content: flex-end; padding-right: 12px; color: #000; font-family: var(--font-mono); font-weight: 600; font-size: 14px; letter-spacing: 0.1em; }
   
   .card-logo-row { display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; }
-  .card-chip { width: 34px; height: 24px; border-radius: 4px; background: linear-gradient(135deg, #F0C878, #D9A441); }
+  .card-chip { width: 34px; height: 24px; border-radius: 4px; background: linear-gradient(135deg, #F0C878, #1877F2); }
   .card-brand-logo { font-family: var(--font-mono); font-weight: 800; font-size: 13px; color: #fff; letter-spacing: 0.05em; }
   .card-number-disp { font-family: var(--font-mono); font-size: 16px; letter-spacing: 0.06em; text-align: left; direction: ltr; margin: 18px 0 6px; position: relative; z-index: 2; }
   .card-bottom-row { display: flex; justify-content: space-between; align-items: flex-end; font-family: var(--font-mono); font-size: 10px; color: rgba(255,255,255,0.7); text-transform: uppercase; position: relative; z-index: 2; }
@@ -500,8 +500,8 @@
     <a href="/" class="logo" aria-label="HDG – דף הבית">
       <svg class="logo-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <rect x="1" y="1" width="30" height="30" rx="8" stroke="#fff" stroke-opacity="0.25" stroke-width="1.4"/>
-        <path d="M8 21L14.5 13L18.5 16.5L23 9.5" stroke="#D9A441" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M17.5 9H23V14.5" stroke="#D9A441" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8 21L14.5 13L18.5 16.5L23 9.5" stroke="#1877F2" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M17.5 9H23V14.5" stroke="#1877F2" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       <span class="logo-word">HDG</span>
     </a>
