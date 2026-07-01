@@ -770,7 +770,7 @@
                 </div>
                 <div class="price-row">
                   <span>עמלת מערכת ואופטימיזציית AI קבועה</span>
-                  <span>₪0 / חודש</span>
+                  <span>₪0 / יום</span>
                 </div>
                 <div class="price-row total">
                   <span>סה"כ חיוב חודשי משוער</span>
