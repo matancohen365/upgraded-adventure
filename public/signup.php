@@ -770,7 +770,7 @@
                 </div>
                 <div class="price-row">
                   <span>עמלת מערכת ואופטימיזציית AI קבועה</span>
-                  <span>₪250 / חודש</span>
+                  <span>₪0 / חודש</span>
                 </div>
                 <div class="price-row total">
                   <span>סה"כ חיוב חודשי משוער</span>
@@ -1389,7 +1389,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     // Cost breakdowns
     var monthlyMedia = dailyVal * 30;
-    var systemFee = 250;
+    var systemFee = 0;
     var monthlyTotal = monthlyMedia + systemFee;
 
     calcMedia.textContent = "₪" + monthlyMedia.toLocaleString() + " / חודש";
@@ -1628,7 +1628,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('successDailyBudget').textContent = "₪" + dailyVal + " ליום";
     
     var monthlyMedia = dailyVal * 30;
-    var monthlyTotal = monthlyMedia + 250;
+    var monthlyTotal = monthlyMedia + 0;
     document.getElementById('successMonthlyTotal').textContent = "₪" + monthlyTotal.toLocaleString() + " בחודש";
 
     // Show success view
