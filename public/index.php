@@ -667,7 +667,7 @@ src="https://www.facebook.com/tr?id=1509241624000686&ev=PageView&noscript=1"
       <div class="testimonial-card reveal">
         <div class="testimonial-mark" aria-hidden="true">״</div>
         <p class="testimonial-quote">תוך פחות מחצי שנה הכפלנו את כמות הלידים, ועדיין הצלחנו לצמצם את עלות הרכישה. הרגשנו לראשונה שמישהו באמת עוקב אחרי המספרים שלנו — לא רק אחרי ה״לייקים״.</p>
-        <p class="testimonial-attr">סמנכ״לית שיווק <span>· דנה כהן, PAX</span></p>
+        <p class="testimonial-attr">סמנכ״לית שיווק PAX<span>· דנה כהן</span></p>
       </div>
     </div>
   </section>
