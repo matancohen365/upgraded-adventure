@@ -773,7 +773,7 @@
                   <span>₪0 / יום</span>
                 </div>
                 <div class="price-row total">
-                  <span>סה"כ חיוב חודשי משוער</span>
+                  <span>סה"כ חיוב משוער</span>
                   <span id="calcTotal">₪3,850 / חודש</span>
                 </div>
                 <span class="field-hint" style="text-align: center; margin-top: 12px;">תקציב המדיה הולך במלואו ישירות למימון הקליקים ברשתות הפרסום.</span>
