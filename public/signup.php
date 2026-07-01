@@ -531,7 +531,7 @@ src="https://www.facebook.com/tr?id=1509241624000686&ev=PageView&noscript=1"
         חיבור מאובטח ומאומת
       </span>
       <a href="/" class="back-link">
-        חזרה לדף הבית
+        חזרה
         <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 8H14M14 8L9.5 3.5M14 8L9.5 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
