@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>וקטור — סוכנות שיווק דיגיטלי מבוססת נתונים</title>
-<meta name="description" content="וקטור היא סוכנות שיווק דיגיטלי שהופכת קמפיינים למספרים שאפשר לסמוך עליהם: SEO, פרסום ממומן, רשתות חברתיות ומיתוג — תחת לוח בקרה אחד.">
+<title>HDG — סוכנות שיווק דיגיטלי מבוססת נתונים</title>
+<meta name="description" content="HDG היא סוכנות שיווק דיגיטלי שהופכת קמפיינים למספרים שאפשר לסמוך עליהם: SEO, פרסום ממומן, רשתות חברתיות ומיתוג — תחת לוח בקרה אחד.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&family=Assistant:wght@400;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -416,13 +416,13 @@
 
 <header>
   <nav class="wrap" aria-label="ניווט ראשי">
-    <a href="#" class="logo" aria-label="וקטור – דף הבית">
+    <a href="#" class="logo" aria-label="HDG – דף הבית">
       <svg class="logo-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <rect x="1" y="1" width="30" height="30" rx="8" stroke="#fff" stroke-opacity="0.25" stroke-width="1.4"/>
         <path d="M8 21L14.5 13L18.5 16.5L23 9.5" stroke="#D9A441" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M17.5 9H23V14.5" stroke="#D9A441" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      <span class="logo-word">וקטור</span>
+      <span class="logo-word">HDG</span>
     </a>
     <ul class="nav-links">
       <li><a href="#services">שירותים</a></li>
@@ -664,7 +664,7 @@
             <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M14 8H2M2 8L6.5 3.5M2 8L6.5 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
-        <p class="cta-contact">או כתבו לנו ישירות: <a href="mailto:hello@vector-agency.co.il">hello@vector-agency.co.il</a> · <span dir="ltr">03-1234567</span></p>
+        <p class="cta-contact">או כתבו לנו ישירות: <a href="mailto:hello@hdg.co.il">hello@hdg.co.il</a> · <span dir="ltr">03-1234567</span></p>
       </div>
     </div>
   </section>
@@ -681,7 +681,7 @@
             <path d="M8 21L14.5 13L18.5 16.5L23 9.5" stroke="#D9A441" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M17.5 9H23V14.5" stroke="#D9A441" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <span class="logo-word">וקטור</span>
+          <span class="logo-word">HDG</span>
         </div>
         <p>סוכנות שיווק דיגיטלי שהופכת קמפיינים למספרים שאפשר לסמוך עליהם.</p>
       </div>
@@ -706,14 +706,14 @@
       <div class="footer-col">
         <h4>צור קשר</h4>
         <ul>
-          <li><a href="mailto:hello@vector-agency.co.il">hello@vector-agency.co.il</a></li>
+          <li><a href="mailto:hello@hdg.co.il">hello@hdg.co.il</a></li>
           <li><a href="tel:031234567" dir="ltr">03-1234567</a></li>
           <li><span>רוטשילד 1, תל אביב</span></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 וקטור. כל הזכויות שמורות.</span>
+      <span>© 2026 HDG. כל הזכויות שמורות.</span>
       <div class="footer-social">
         <a href="#" aria-label="לינקדאין">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 8.5H7.5V19H4.5V8.5Z" fill="currentColor"/><circle cx="6" cy="5.2" r="1.8" fill="currentColor"/><path d="M10.3 8.5H13.2V10C13.7 9.1 14.9 8.2 16.7 8.2C19.6 8.2 20.5 10 20.5 12.7V19H17.5V13.3C17.5 11.9 17 11 15.8 11C14.8 11 14.2 11.7 13.9 12.3C13.8 12.6 13.8 13 13.8 13.4V19H10.8C10.8 19 10.9 9.3 10.8 8.5H10.3Z" fill="currentColor"/></svg>

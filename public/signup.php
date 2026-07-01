@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>וקטור — הקמת קמפיין שיווק דיגיטלי מבוסס AI</title>
-<meta name="description" content="וקטור: הקמת קמפיין שיווק אוטומטי לעסק שלך. הגדרת יעד, תקציב וקבלת תוצאות בלי צורך בידע מוקדם בדיגיטל.">
+<title>HDG — הקמת קמפיין שיווק דיגיטלי מבוסס AI</title>
+<meta name="description" content="HDG: הקמת קמפיין שיווק אוטומטי לעסק שלך. הגדרת יעד, תקציב וקבלת תוצאות בלי צורך בידע מוקדם בדיגיטל.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&family=Assistant:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -497,13 +497,13 @@
 
 <header>
   <nav class="wrap" aria-label="ניווט">
-    <a href="/" class="logo" aria-label="וקטור – דף הבית">
+    <a href="/" class="logo" aria-label="HDG – דף הבית">
       <svg class="logo-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <rect x="1" y="1" width="30" height="30" rx="8" stroke="#fff" stroke-opacity="0.25" stroke-width="1.4"/>
         <path d="M8 21L14.5 13L18.5 16.5L23 9.5" stroke="#D9A441" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M17.5 9H23V14.5" stroke="#D9A441" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      <span class="logo-word">וקטור</span>
+      <span class="logo-word">HDG</span>
     </a>
     <div class="header-right">
       <span class="secure-badge">
@@ -830,7 +830,7 @@
                         <div class="card-signature" id="cardCvvPreview">CVV</div>
                       </div>
                       <div style="padding: 0 24px 10px; font-size: 8px; color: var(--slate-light); text-align: left;">
-                        SECURE PAYMENTS BY VECTOR INC.
+                        SECURE PAYMENTS BY HDG INC.
                       </div>
                     </div>
                   </div>
@@ -920,7 +920,7 @@
               <div class="google-ad">
                 <div class="google-ad-header">
                   <span class="google-ad-sponsor">ממומן</span>
-                  <span class="google-ad-url" id="googleAdUrl">https://www.vector.co/hair-salon</span>
+                  <span class="google-ad-url" id="googleAdUrl">https://www.hdg.co.il/hair-salon</span>
                 </div>
                 <div class="google-ad-title" id="googleAdTitle">
                   קוסמטיקה וטיפולי יופי ברמה הגבוהה ביותר | סטודיו יופי אור
@@ -956,7 +956,7 @@
                 </div>
                 <div class="fb-ad-footer">
                   <div class="fb-ad-footer-info">
-                    <div class="fb-ad-footer-domain">VECTOR-ADS.CO.IL</div>
+                    <div class="fb-ad-footer-domain">HDG.CO.IL</div>
                     <div class="fb-ad-footer-title" id="fbFooterTitle">סטודיו יופי אור - שירות מנצח</div>
                   </div>
                   <div class="fb-ad-cta-btn" id="fbAdCtaText">התקשרו עכשיו</div>
@@ -1005,7 +1005,7 @@
 </div>
 
 <footer>
-  <div class="wrap">© 2026 וקטור. כל הזכויות שמורות. מערכת פרסום דיגיטלי מנוהלת AI.</div>
+  <div class="wrap">© 2026 HDG. כל הזכויות שמורות. מערכת פרסום דיגיטלי מנוהלת AI.</div>
 </footer>
 
 <script>
@@ -1333,7 +1333,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     // Setup URL slug
     var slug = displayBusinessName.toLowerCase().replace(/[^a-z0-9א-ת]/g, '-').substring(0, 20);
-    googleAdUrl.textContent = "https://www.vector-ads.co.il/" + slug;
+    googleAdUrl.textContent = "https://www.hdg.co.il/" + slug;
     
     // Google Card Updates
     googleAdTitle.textContent = suggestedTagline + " | " + displayBusinessName;
