@@ -684,7 +684,7 @@ src="https://www.facebook.com/tr?id=1509241624000686&ev=PageView&noscript=1"
             <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M14 8H2M2 8L6.5 3.5M2 8L6.5 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
-        <p class="cta-contact">או כתבו לנו ישירות: <a href="mailto:hello@hdg.co.il">hello@hdg.co.il</a> · <span dir="ltr">03-1234567</span></p>
+        <p class="cta-contact">או כתבו לנו ישירות: <a href="mailto:hello@hdg.co.il">hello@hdg.co.il</a> · <span dir="ltr">058-432-1777</span></p>
       </div>
     </div>
   </section>
