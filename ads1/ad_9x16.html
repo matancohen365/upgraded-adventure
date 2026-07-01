@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HADAR - High Jewelry Private Collection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&family=Assistant:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+	  /* ================= RESET & BASE ================= */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  img, svg { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+  ul { list-style: none; }
+  input, select, textarea { font: inherit; color: inherit; }
+
+  :root {
+    /* Meta / Facebook / WhatsApp Colors */
+    --meta-blue: #1877F2;
+    --meta-blue-hover: #166FE5;
+    --meta-blue-light: rgba(24, 119, 242, 0.08);
+    --whatsapp-green: #25D366;
+    --whatsapp-green-dark: #075E54;
+    --whatsapp-teal: #128C7E;
+    
+    --paper: #F0F2F5; /* Facebook Light Background */
+    --paper-card: #FFFFFF;
+    --ink: #1C1E21; /* Facebook Dark Ink */
+    --slate: #65676B; /* Facebook Secondary Text */
+    --slate-light: #8D949E; /* Facebook Muted Text */
+    --line-light: #CED0D4; /* Facebook Card Border */
+    --line-dark: rgba(255, 255, 255, 0.15);
+    
+    --error: #FA3E3E;
+    --success: #25D366;
+
+    /* Native Meta-style system fonts */
+    --font-display: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Heebo';
+    --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Assistant';
+    --font-mono: 'IBM Plex Mono', monospace;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px; /* Native Meta rounded corners */
+    --container: 1180px;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+        body {
+            direction: rtl;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #0a0a0a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            /*font-family: 'Frank Ruhl Libre', serif;*/
+        }
+
+        .ad-container {
+            width: 1080px;
+            height: 1920px;
+            background-image: url('bg_9x16.png');
+            background-size: cover;
+            background-position: center;
+            /* background-position: 0 -20px; */
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            /* box-shadow: 0 0 100px rgba(0, 0, 0, 0.8); */
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+
+        }
+
+        .iphone-tag {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 700px;
+            /*background: #fff;*/
+            /*background: #fff;*/
+            /*padding: 8px 26px;*/
+            /* Tight padding for museum label look */
+            color: #fff;
+            font-size: 300px;
+            font-weight: 600;
+            /* Light weight for elegance */
+            /*font-style: italic;*/
+            /* Modern Serif Italic feel */
+            /*font-family: 'Frank Ruhl Libre', serif;*/
+            z-index: 1000;
+            white-space: nowrap;
+            letter-spacing: -0.01em;
+            /* Refined Gold Shadow: 10px down, 45px blur, Gold color with 20% opacity for visibility */
+            text-shadow: 0 0px 6px rgba(0, 0, 255, 0.8);
+			line-height: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ad-container">
+        <div class="content-wrapper">
+            <div class="iphone-tag">
+                פרסם<br>כאן
+            </div>
+
+        </div>
+    </div>
+    <!-- <div style="position: absolute; border: 1px solid red; width: 1000px; height: 1000px;"></div> -->
+
+</body>
+
+</html>
