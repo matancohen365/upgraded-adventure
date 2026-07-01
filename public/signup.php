@@ -730,7 +730,7 @@
                 <div class="slider-wrapper">
                   <input type="range" class="custom-slider" id="budgetRange" min="5" max="500" step="5" value="120" aria-label="תקציב יומי בשקלים">
                   <div class="slider-labels">
-                    <span>₪30 ליום</span>
+                    <span>₪5 ליום</span>
                     <span>₪500 ליום</span>
                   </div>
                 </div>
@@ -1392,8 +1392,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var systemFee = 0;
     var monthlyTotal = monthlyMedia + systemFee;
 
-    calcMedia.textContent = "₪" + monthlyMedia.toLocaleString() + " / חודש";
-    calcTotal.textContent = "₪" + monthlyTotal.toLocaleString() + " / חודש";
+    calcMedia.textContent = "₪" + dailyVal.toLocaleString() + " / יום";
+    calcTotal.textContent = "₪" + dailyVal.toLocaleString() + " / יום";
 
     // Dynamic expected results estimations based on cost-per-lead (CPL)
     var cplVal = catInfo.cpl;
@@ -1629,7 +1629,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     var monthlyMedia = dailyVal * 30;
     var monthlyTotal = monthlyMedia + 0;
-    document.getElementById('successMonthlyTotal').textContent = "₪" + monthlyTotal.toLocaleString() + " בחודש";
+    document.getElementById('successMonthlyTotal').textContent = "₪" + dailyVal.toLocaleString() + " ביום";
 
     // Show success view
     successSection.classList.add('active');
