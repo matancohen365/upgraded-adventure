@@ -727,8 +727,8 @@ src="https://www.facebook.com/tr?id=1509241624000686&ev=PageView&noscript=1"
         <h4>צור קשר</h4>
         <ul>
           <li><a href="mailto:hello@hdg.co.il">hello@hdg.co.il</a></li>
-          <li><a href="tel:031234567" dir="ltr">03-1234567</a></li>
-          <li><span>רוטשילד 1, תל אביב</span></li>
+          <li><a href="tel:031234567" dir="ltr">058-432-1777</a></li>
+          <li><span>הגיא 1, הר אדר</span></li>
         </ul>
       </div>
     </div>
