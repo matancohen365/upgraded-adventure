@@ -512,12 +512,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- ② Google Analytics 4 + Google Ads -->
 <!-- REPLACE G-XXXXXXXXXX with your GA4 Measurement ID -->
 <!-- REPLACE AW-XXXXXXXXXX with your Google Ads Conversion ID -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-309XGVKBDJ"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-604C3TGNEH"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-309XGVKBDJ', {
+  gtag('config', 'G-604C3TGNEH', {
     page_title: document.title,
     page_location: window.location.href,
     send_page_view: true
