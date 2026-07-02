@@ -493,7 +493,40 @@
 </style>
 
 
-<!-- Meta Pixel Code -->
+<!-- ============================================================
+     PRODUCTION TRACKING SUITE — HDG signup.php
+     Platforms: Google Analytics 4, Google Ads, Meta (FB) Pixel,
+                TikTok Pixel, Snapchat Pixel
+     ============================================================ -->
+
+<!-- GTM Body noscript — keep this after opening <body> tag instead -->
+<!-- ① Google Tag Manager (HEAD snippet) -->
+<!-- REPLACE GTM-XXXXXXX with your real GTM container ID -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+<!-- End Google Tag Manager -->
+
+<!-- ② Google Analytics 4 + Google Ads -->
+<!-- REPLACE G-XXXXXXXXXX with your GA4 Measurement ID -->
+<!-- REPLACE AW-XXXXXXXXXX with your Google Ads Conversion ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', {
+    page_title: document.title,
+    page_location: window.location.href,
+    send_page_view: true
+  });
+  gtag('config', 'AW-XXXXXXXXXX'); // Google Ads remarketing
+</script>
+<!-- End Google Analytics 4 / Google Ads -->
+
+<!-- ③ Meta (Facebook) Pixel -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -509,10 +542,35 @@ fbq('track', 'PageView');
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1509241624000686&ev=PageView&noscript=1"
 /></noscript>
-<!-- End Meta Pixel Code -->
+<!-- End Meta Pixel -->
+
+<!-- ④ TikTok Pixel -->
+<!-- REPLACE XXXXXXXXXXXXXXXX with your TikTok Pixel ID -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=['page','track','identify','instances','debug','on','off','once','ready','alias','group','enableCookie','disableCookie'],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i='https://analytics.tiktok.com/i18n/pixel/events.js';ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement('script');o.type='text/javascript',o.async=!0,o.src=i+'?sdkid='+e+'&lib='+t;var a=document.getElementsByTagName('script')[0];a.parentNode.insertBefore(o,a)};
+  ttq.load('XXXXXXXXXXXXXXXX');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- End TikTok Pixel -->
+
+<!-- ⑤ Snapchat Pixel -->
+<!-- REPLACE your-snapchat-pixel-id with your real Snap Pixel ID -->
+<script type='text/javascript'>
+(function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function(){a.handleRequest?a.handleRequest.apply(a,arguments):a.queue.push(arguments)};a.queue=[];var s='script';r=t.createElement(s);r.async=!0;r.src=n;var u=t.getElementsByTagName(s)[0];u.parentNode.insertBefore(r,u);})(window,document,'https://sc-static.net/scevent.min.js');
+snaptr('init', 'your-snapchat-pixel-id', { 'user_email': '' });
+snaptr('track', 'PAGE_VIEW');
+</script>
+<!-- End Snapchat Pixel -->
 
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<!-- REPLACE GTM-XXXXXXX with your real GTM container ID -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <a href="#main" class="skip-link">דלג לתוכן הראשי</a>
 
 <header>
@@ -1033,6 +1091,131 @@ document.addEventListener('DOMContentLoaded', function () {
   var currentStep = 1;
   var totalSteps = 4;
 
+  // ============================================================
+  // TRACKING HELPERS — signup.php (Multi-step Funnel)
+  // ============================================================
+
+  /**
+   * Fire a tracking event across ALL platforms simultaneously.
+   * Wraps: Meta Pixel, GA4 (gtag), Google Ads Conversion, TikTok Pixel, Snapchat Pixel, GTM dataLayer.
+   * @param {string} eventName  - Canonical FB Standard Event name (e.g. 'Lead', 'CompleteRegistration')
+   * @param {Object} params     - Additional event parameters
+   */
+  function trackEvent(eventName, params) {
+    params = params || {};
+
+    // — Meta (Facebook) Pixel —
+    try {
+      if (window.fbq) fbq('track', eventName, params);
+    } catch(e) {}
+
+    // — Google Analytics 4 —
+    try {
+      if (window.gtag) {
+        var ga4Map = {
+          'Lead':               'generate_lead',
+          'ViewContent':        'view_item',
+          'InitiateCheckout':   'begin_checkout',
+          'AddPaymentInfo':     'add_payment_info',
+          'CompleteRegistration':'sign_up',
+          'Contact':            'contact',
+          'Schedule':           'schedule'
+        };
+        gtag('event', ga4Map[eventName] || eventName.toLowerCase().replace(/ /g,'_'), params);
+      }
+    } catch(e) {}
+
+    // — Google Ads Conversion (CompleteRegistration = primary conversion) —
+    try {
+      if (window.gtag) {
+        var conversionMap = {
+          'Lead':               'AW-XXXXXXXXXX/XXXXXXXXXXXXXX', // Lead conversion
+          'CompleteRegistration':'AW-XXXXXXXXXX/XXXXXXXXXXXXXX'  // Purchase/Signup conversion
+        };
+        if (conversionMap[eventName]) {
+          gtag('event', 'conversion', {
+            send_to: conversionMap[eventName],
+            value: params.value || 1.0,
+            currency: params.currency || 'ILS'
+          });
+        }
+      }
+    } catch(e) {}
+
+    // — TikTok Pixel —
+    try {
+      if (window.ttq) {
+        var ttqMap = {
+          'Lead':               'SubmitForm',
+          'ViewContent':        'ViewContent',
+          'InitiateCheckout':   'InitiateCheckout',
+          'AddPaymentInfo':     'AddPaymentInfo',
+          'CompleteRegistration':'CompleteRegistration',
+          'Contact':            'Contact'
+        };
+        ttq.track(ttqMap[eventName] || eventName, params);
+      }
+    } catch(e) {}
+
+    // — Snapchat Pixel —
+    try {
+      if (window.snaptr) {
+        var snapMap = {
+          'Lead':               'SIGN_UP',
+          'ViewContent':        'VIEW_CONTENT',
+          'InitiateCheckout':   'START_CHECKOUT',
+          'AddPaymentInfo':     'ADD_BILLING',
+          'CompleteRegistration':'PURCHASE',
+          'Contact':            'SUBSCRIBE'
+        };
+        snaptr('track', snapMap[eventName] || 'CUSTOM_EVENT_1', params);
+      }
+    } catch(e) {}
+
+    // — GTM dataLayer push —
+    try {
+      window.dataLayer = window.dataLayer || [];
+      dataLayer.push({
+        event: 'custom_event',
+        eventName: eventName,
+        eventParams: params
+      });
+    } catch(e) {}
+  }
+
+  /**
+   * Fire a custom / non-standard event (GA4 + GTM only).
+   * Used for granular funnel steps (e.g. 'funnel_step_complete').
+   */
+  function trackCustom(eventName, params) {
+    params = params || {};
+    try {
+      if (window.fbq) fbq('trackCustom', eventName, params);
+    } catch(e) {}
+    try {
+      if (window.gtag) gtag('event', eventName, params);
+    } catch(e) {}
+    try {
+      if (window.ttq) ttq.track(eventName, params);
+    } catch(e) {}
+    try {
+      window.dataLayer = window.dataLayer || [];
+      dataLayer.push({ event: eventName, eventParams: params });
+    } catch(e) {}
+  }
+
+  // ---- Page-load event: ViewContent (signup funnel start) ----
+  trackEvent('ViewContent', {
+    content_name: 'Signup Funnel — HDG',
+    content_category: 'Lead Generation',
+    content_type: 'registration_form'
+  });
+
+  // ============================================================
+  // END TRACKING HELPERS DECLARATION
+  // (actual event fires are placed throughout the funnel below)
+  // ============================================================
+
   // ================= PARTIAL SAVE / TRACKING =================
   // Generate or retrieve a stable session ID for this browser visit
   var _psSessionId = (function () {
@@ -1353,15 +1536,73 @@ document.addEventListener('DOMContentLoaded', function () {
   // Next & Back event handlers
   btnNext.addEventListener('click', function () {
     if (!validateStep(currentStep)) {
-      // Save even when validation fails — user attempted to proceed
+      // Track validation failure
       sendPartialSave('validation_failed', true);
+      trackCustom('form_validation_failed', { step: currentStep });
       return;
     }
     
     if (currentStep < totalSteps) {
       sendPartialSave('step_complete_' + currentStep, true);
+
+      // ======= STEP-COMPLETION TRACKING EVENTS =======
+      if (currentStep === 1) {
+        // Step 1 complete: Business details filled — fire Lead
+        trackEvent('Lead', {
+          content_name: 'Step 1 Complete — Business Details',
+          content_category: 'Funnel Step',
+          step: 1
+        });
+        trackCustom('funnel_step_complete', { step: 1, step_name: 'business_details' });
+      }
+      else if (currentStep === 2) {
+        // Step 2 complete: Goals & location set
+        var goalRadio = document.querySelector('input[name="campaignGoal"]:checked');
+        trackCustom('funnel_step_complete', {
+          step: 2,
+          step_name: 'goals_and_geography',
+          campaign_goal: goalRadio ? goalRadio.value : 'unknown',
+          target_location: targetLocationSelect.value
+        });
+      }
+      else if (currentStep === 3) {
+        // Step 3 complete: Budget selected — fire InitiateCheckout
+        var dailyBudget = parseInt(budgetRange.value, 10);
+        trackEvent('InitiateCheckout', {
+          content_name: 'Step 3 Complete — Budget Selected',
+          content_category: 'Funnel Step',
+          value: dailyBudget * 30,
+          currency: 'ILS',
+          num_items: 1,
+          step: 3
+        });
+        trackCustom('funnel_step_complete', {
+          step: 3,
+          step_name: 'budget',
+          daily_budget: dailyBudget,
+          monthly_budget: dailyBudget * 30
+        });
+      }
+      // ======= END STEP-COMPLETION TRACKING =======
+
       currentStep++;
       renderStep(currentStep);
+
+      // ======= STEP-ENTRY TRACKING EVENTS =======
+      if (currentStep === 4) {
+        // Entered payment step — fire AddPaymentInfo
+        trackEvent('AddPaymentInfo', {
+          content_name: 'Step 4 — Payment Details',
+          content_category: 'Funnel Step',
+          currency: 'ILS',
+          step: 4
+        });
+        trackCustom('funnel_step_view', { step: 4, step_name: 'payment' });
+      } else {
+        trackCustom('funnel_step_view', { step: currentStep });
+      }
+      // ======= END STEP-ENTRY TRACKING =======
+
     } else {
       submitSignup();
     }
@@ -1370,6 +1611,7 @@ document.addEventListener('DOMContentLoaded', function () {
   btnBack.addEventListener('click', function () {
     if (currentStep > 1) {
       sendPartialSave('step_back_from_' + currentStep, true);
+      trackCustom('funnel_step_back', { from_step: currentStep, to_step: currentStep - 1 });
       currentStep--;
       renderStep(currentStep);
     }
@@ -1653,8 +1895,23 @@ document.addEventListener('DOMContentLoaded', function () {
     resetLoaderSteps();
     loaderProgressDesc.textContent = "שומר את פרטי הקמפיין ומאמת תשלום...";
     loaderOverlay.classList.add('active');
-	
-	fbq('track', 'CompleteRegistration');
+
+    // ======= FIRE COMPLETE REGISTRATION EVENT (ALL PLATFORMS) =======
+    var payload = collectFormPayload();
+    var dailyBudget = parseInt((document.getElementById('budgetRange') || {value:'30'}).value, 10);
+    var conversionValue = dailyBudget * 30; // monthly value in ILS
+
+    trackEvent('CompleteRegistration', {
+      content_name: 'Campaign Signup Completed',
+      content_category: 'Lead Generation',
+      value: conversionValue,
+      currency: 'ILS',
+      status: 'success',
+      // Pass hashed user info if available (SHA256 is best; here we pass raw for simplicity)
+      em: payload.clientEmail || '',  // Meta will auto-hash
+      ph: payload.clientPhone || ''   // Meta will auto-hash
+    });
+    // ======= END COMPLETE REGISTRATION EVENT =======
 
     fetch('api/signup-submit.php', {
       method: 'POST',

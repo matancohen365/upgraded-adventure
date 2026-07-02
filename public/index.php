@@ -412,7 +412,43 @@
 </style>
 
 
-<!-- Meta Pixel Code -->
+<!-- ============================================================
+     PRODUCTION TRACKING SUITE — HDG index.php
+     Platforms: Google Analytics 4, Google Ads, Meta (FB) Pixel,
+                TikTok Pixel, Snapchat Pixel
+     ============================================================ -->
+
+<!-- ① Google Tag Manager (HEAD snippet) - loads GA4 + Google Ads -->
+<!-- REPLACE GTM-XXXXXXX with your real GTM container ID -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+<!-- End Google Tag Manager -->
+
+<!-- ② Google Analytics 4 (direct) + Google Ads Conversion Tag -->
+<!-- REPLACE G-XXXXXXXXXX with your GA4 Measurement ID -->
+<!-- REPLACE AW-XXXXXXXXXX/XXXXXXXXXXXXXX with your Google Ads Conversion ID/Label -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  // GA4
+  gtag('config', 'G-XXXXXXXXXX', {
+    page_title: document.title,
+    page_location: window.location.href,
+    send_page_view: true
+  });
+
+  // Google Ads remarketing tag
+  gtag('config', 'AW-XXXXXXXXXX');
+</script>
+<!-- End Google Tag / Google Ads -->
+
+<!-- ③ Meta (Facebook) Pixel -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -428,7 +464,27 @@ fbq('track', 'PageView');
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1509241624000686&ev=PageView&noscript=1"
 /></noscript>
-<!-- End Meta Pixel Code -->
+<!-- End Meta Pixel -->
+
+<!-- ④ TikTok Pixel -->
+<!-- REPLACE XXXXXXXXXXXXXXXX with your TikTok Pixel ID -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=['page','track','identify','instances','debug','on','off','once','ready','alias','group','enableCookie','disableCookie'],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i='https://analytics.tiktok.com/i18n/pixel/events.js';ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement('script');o.type='text/javascript',o.async=!0,o.src=i+'?sdkid='+e+'&lib='+t;var a=document.getElementsByTagName('script')[0];a.parentNode.insertBefore(o,a)};
+  ttq.load('XXXXXXXXXXXXXXXX');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- End TikTok Pixel -->
+
+<!-- ⑤ Snapchat Pixel -->
+<!-- REPLACE your-snapchat-pixel-id with your real Snap Pixel ID -->
+<script type='text/javascript'>
+(function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function(){a.handleRequest?a.handleRequest.apply(a,arguments):a.queue.push(arguments)};a.queue=[];var s='script';r=t.createElement(s);r.async=!0;r.src=n;var u=t.getElementsByTagName(s)[0];u.parentNode.insertBefore(r,u);})(window,document,'https://sc-static.net/scevent.min.js');
+snaptr('init', 'your-snapchat-pixel-id', { 'user_email': '' });
+snaptr('track', 'PAGE_VIEW');
+</script>
+<!-- End Snapchat Pixel -->
 
 </head>
 <body>
@@ -749,6 +805,177 @@ src="https://www.facebook.com/tr?id=1509241624000686&ev=PageView&noscript=1"
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ============================================================
+  // TRACKING HELPERS — index.php
+  // ============================================================
+
+  /**
+   * Fire a tracking event across ALL platforms simultaneously.
+   * @param {string} eventName   - Canonical event name (e.g. 'Lead', 'ViewContent')
+   * @param {Object} params      - Event parameters
+   */
+  function trackEvent(eventName, params) {
+    params = params || {};
+
+    // — Meta (Facebook) Pixel —
+    try {
+      if (window.fbq) {
+        fbq('track', eventName, params);
+      }
+    } catch(e) {}
+
+    // — Google Analytics 4 (via gtag) —
+    try {
+      if (window.gtag) {
+        // Map standard FB event names to GA4 equivalents where needed
+        var ga4Map = {
+          'Lead':               'generate_lead',
+          'ViewContent':        'view_item',
+          'InitiateCheckout':   'begin_checkout',
+          'CompleteRegistration':'sign_up',
+          'Contact':            'contact',
+          'Schedule':           'schedule',
+          'Search':             'search'
+        };
+        var ga4Event = ga4Map[eventName] || eventName.toLowerCase().replace(/ /g,'_');
+        gtag('event', ga4Event, params);
+      }
+    } catch(e) {}
+
+    // — Google Ads Conversion (for Lead conversions) —
+    try {
+      if (window.gtag && eventName === 'Lead') {
+        gtag('event', 'conversion', {
+          send_to: 'AW-XXXXXXXXXX/XXXXXXXXXXXXXX',  // Replace with your Google Ads conversion action
+          value: 1.0,
+          currency: 'ILS'
+        });
+      }
+    } catch(e) {}
+
+    // — TikTok Pixel —
+    try {
+      if (window.ttq) {
+        var ttqMap = {
+          'Lead':               'SubmitForm',
+          'ViewContent':        'ViewContent',
+          'InitiateCheckout':   'InitiateCheckout',
+          'CompleteRegistration':'CompleteRegistration',
+          'Contact':            'Contact'
+        };
+        var ttqEvent = ttqMap[eventName] || eventName;
+        ttq.track(ttqEvent, params);
+      }
+    } catch(e) {}
+
+    // — Snapchat Pixel —
+    try {
+      if (window.snaptr) {
+        var snapMap = {
+          'Lead':               'SIGN_UP',
+          'ViewContent':        'VIEW_CONTENT',
+          'InitiateCheckout':   'START_CHECKOUT',
+          'CompleteRegistration':'SIGN_UP',
+          'Contact':            'SUBSCRIBE'
+        };
+        var snapEvent = snapMap[eventName] || 'CUSTOM_EVENT_1';
+        snaptr('track', snapEvent, params);
+      }
+    } catch(e) {}
+
+    // — dataLayer push for GTM —
+    try {
+      window.dataLayer = window.dataLayer || [];
+      dataLayer.push({
+        event: 'custom_event',
+        eventName: eventName,
+        eventParams: params
+      });
+    } catch(e) {}
+  }
+
+  // ---- ViewContent: when page becomes visible (scroll depth 0) ----
+  trackEvent('ViewContent', {
+    content_name: 'Landing Page — HDG',
+    content_category: 'Marketing Agency',
+    content_type: 'website'
+  });
+
+  // ---- Lead: every CTA click that links to signup ----
+  document.querySelectorAll('a[href*="signup"]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      trackEvent('Lead', {
+        content_name: 'CTA Click — ' + (link.textContent.trim().substring(0, 50) || 'signup'),
+        content_category: 'Conversion',
+        currency: 'ILS'
+      });
+    });
+  });
+
+  // ---- Contact: email / phone link clicks ----
+  document.querySelectorAll('a[href^="mailto:"], a[href^="tel:"]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      trackEvent('Contact', {
+        content_name: link.href,
+        content_type: link.href.startsWith('mailto') ? 'email' : 'phone'
+      });
+    });
+  });
+
+  // ---- Scroll depth milestones (25%, 50%, 75%, 90%) ----
+  var scrollMilestones = {25: false, 50: false, 75: false, 90: false};
+  window.addEventListener('scroll', function() {
+    var scrollPct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+    Object.keys(scrollMilestones).forEach(function(pct) {
+      if (!scrollMilestones[pct] && scrollPct >= parseInt(pct)) {
+        scrollMilestones[pct] = true;
+        // Push scroll depth to GA4 / GTM dataLayer
+        try {
+          window.dataLayer = window.dataLayer || [];
+          dataLayer.push({
+            event: 'scroll_depth',
+            scroll_depth: pct + '%',
+            page_location: window.location.href
+          });
+          if (window.gtag) gtag('event', 'scroll', { percent_scrolled: parseInt(pct) });
+        } catch(e) {}
+      }
+    });
+  }, { passive: true });
+
+  // ---- Section visibility events (ViewContent per section) ----
+  var sectionMap = {
+    'services':    'Services Section',
+    'process':     'Process Section',
+    'results':     'Results Section',
+    'testimonial': 'Testimonial Section',
+    'contact':     'CTA Section'
+  };
+  if ('IntersectionObserver' in window) {
+    var sectionObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var sectionId = entry.target.getAttribute('id');
+          if (sectionId && sectionMap[sectionId]) {
+            trackEvent('ViewContent', {
+              content_name: sectionMap[sectionId],
+              content_category: 'Section View',
+              content_type: 'section'
+            });
+          }
+          sectionObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    Object.keys(sectionMap).forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) sectionObserver.observe(el);
+    });
+  }
+  // ============================================================
+  // END TRACKING — index.php
+  // ============================================================
 
   /* ---- Mobile nav toggle ---- */
   var navToggle = document.getElementById('navToggle');
