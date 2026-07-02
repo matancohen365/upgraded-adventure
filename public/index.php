@@ -735,10 +735,10 @@ src="https://www.facebook.com/tr?id=1509241624000686&ev=PageView&noscript=1"
     <div class="footer-bottom">
       <span>© 2026 HDG. כל הזכויות שמורות.</span>
       <div class="footer-social">
-        <a href="#" aria-label="לינקדאין">
+        <a href="https://www.linkedin.com/company/135194954/" aria-label="לינקדאין">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 8.5H7.5V19H4.5V8.5Z" fill="currentColor"/><circle cx="6" cy="5.2" r="1.8" fill="currentColor"/><path d="M10.3 8.5H13.2V10C13.7 9.1 14.9 8.2 16.7 8.2C19.6 8.2 20.5 10 20.5 12.7V19H17.5V13.3C17.5 11.9 17 11 15.8 11C14.8 11 14.2 11.7 13.9 12.3C13.8 12.6 13.8 13 13.8 13.4V19H10.8C10.8 19 10.9 9.3 10.8 8.5H10.3Z" fill="currentColor"/></svg>
         </a>
-        <a href="#" aria-label="אינסטגרם">
+        <a href="https://www.linkedin.com/company/135194954/" aria-label="אינסטגרם">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="16" height="16" rx="5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="1.7"/><circle cx="16.6" cy="7.4" r="1" fill="currentColor"/></svg>
         </a>
       </div>
