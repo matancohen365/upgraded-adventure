@@ -430,14 +430,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- ② Google Analytics 4 (direct) + Google Ads Conversion Tag -->
 <!-- REPLACE G-XXXXXXXXXX with your GA4 Measurement ID -->
 <!-- REPLACE AW-XXXXXXXXXX/XXXXXXXXXXXXXX with your Google Ads Conversion ID/Label -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-309XGVKBDJ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   // GA4
-  gtag('config', 'G-XXXXXXXXXX', {
+  gtag('config', 'G-309XGVKBDJ', {
     page_title: document.title,
     page_location: window.location.href,
     send_page_view: true
