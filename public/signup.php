@@ -1651,7 +1651,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     var monthlyMedia = dailyVal * 30;
     var monthlyTotal = monthlyMedia + 0;
-    document.getElementById('successMonthlyTotal').textContent = "₪" + dailyVal.toLocaleString() + " ליום";
+    document.getElementById('successMonthlyTotal').textContent = "₪" + monthlyTotal.toLocaleString() + " לחודש";
 
     // Show success view
     successSection.classList.add('active');
