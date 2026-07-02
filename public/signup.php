@@ -567,8 +567,7 @@ snaptr('track', 'PAGE_VIEW');
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
-<!-- REPLACE GTM-XXXXXXX with your real GTM container ID -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PXFMTZVD"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <a href="#main" class="skip-link">דלג לתוכן הראשי</a>
