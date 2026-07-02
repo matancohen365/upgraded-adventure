@@ -1665,6 +1665,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       })
       .then(function (result) {
+		  
+		fbq('track', 'CompleteRegistration');
+		  
         if (!result.ok || !result.body.success) {
           loaderOverlay.classList.remove('active');
           btnNext.disabled = false;
@@ -1676,8 +1679,6 @@ document.addEventListener('DOMContentLoaded', function () {
           alert(result.body.message || 'אירעה שגיאה בשמירת ההרשמה. נסו שוב.');
           return;
         }
-		
-		fbq('track', 'CompleteRegistration');
 
         loaderProgressDesc.textContent = "מנתח את פרטי העסק ומייצר מילות מפתח ממוקדות...";
 
