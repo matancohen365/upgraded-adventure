@@ -1653,6 +1653,8 @@ document.addEventListener('DOMContentLoaded', function () {
     resetLoaderSteps();
     loaderProgressDesc.textContent = "שומר את פרטי הקמפיין ומאמת תשלום...";
     loaderOverlay.classList.add('active');
+	
+	fbq('track', 'CompleteRegistration');
 
     fetch('api/signup-submit.php', {
       method: 'POST',
@@ -1665,9 +1667,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       })
       .then(function (result) {
-		  
-		fbq('track', 'CompleteRegistration');
-		  
         if (!result.ok || !result.body.success) {
           loaderOverlay.classList.remove('active');
           btnNext.disabled = false;
