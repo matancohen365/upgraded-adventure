@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HDG - Logo (1x1)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #050510;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Heebo', sans-serif;
+        }
+
+        .ad-container {
+            width: 1000px;
+            height: 1000px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #0B1120;
+        }
+
+        /* ── Ambient gradient layers ── */
+        .ad-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 70% 70% at 50% 50%, rgba(37, 99, 235, 0.18) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 20% 75%, rgba(56, 189, 248, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 35% 35% at 80% 25%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        /* ── Spotlight pulse ── */
+        .spotlight {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.14) 0%, rgba(56, 189, 248, 0.04) 45%, transparent 70%);
+            border-radius: 50%;
+            z-index: 2;
+            animation: spotlightPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes spotlightPulse {
+            0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        /* ── Grid overlay ── */
+        .grid-overlay {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 2;
+        }
+
+        /* ── Content ── */
+        .content-wrapper {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* ── Logo text ── */
+        .logo-text {
+            font-family: 'Heebo', sans-serif;
+            font-weight: 900;
+            font-size: 300px;
+            color: #F1F5F9;
+            letter-spacing: 0.06em;
+            line-height: 1;
+            text-shadow:
+                0 0 50px rgba(37, 99, 235, 0.35),
+                0 0 100px rgba(37, 99, 235, 0.12);
+        }
+
+        /* ── Brand dot below ── */
+        .brand-dot {
+            width: 18px;
+            height: 18px;
+            background: #2563EB;
+            border-radius: 50%;
+            margin-top: 30px;
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.5), 0 0 60px rgba(37, 99, 235, 0.2);
+            animation: dotPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes dotPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(37, 99, 235, 0.5), 0 0 60px rgba(37, 99, 235, 0.2); }
+            50% { box-shadow: 0 0 30px rgba(37, 99, 235, 0.7), 0 0 80px rgba(37, 99, 235, 0.3); }
+        }
+
+        /* ── Corner accents ── */
+        .corner {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            z-index: 10;
+        }
+
+        .corner--tl {
+            top: 30px;
+            right: 30px;
+            border-top: 2px solid rgba(37, 99, 235, 0.3);
+            border-right: 2px solid rgba(37, 99, 235, 0.3);
+        }
+
+        .corner--br {
+            bottom: 30px;
+            left: 30px;
+            border-bottom: 2px solid rgba(37, 99, 235, 0.3);
+            border-left: 2px solid rgba(37, 99, 235, 0.3);
+        }
+
+        .corner--tr {
+            top: 30px;
+            left: 30px;
+            border-top: 2px solid rgba(37, 99, 235, 0.3);
+            border-left: 2px solid rgba(37, 99, 235, 0.3);
+        }
+
+        .corner--bl {
+            bottom: 30px;
+            right: 30px;
+            border-bottom: 2px solid rgba(37, 99, 235, 0.3);
+            border-right: 2px solid rgba(37, 99, 235, 0.3);
+        }
+
+        /* ── Bottom accent ── */
+        .bottom-accent {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #2563EB 30%, #38BDF8 50%, #2563EB 70%, transparent);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ad-container">
+        <div class="spotlight"></div>
+        <div class="grid-overlay"></div>
+
+        <div class="corner corner--tl"></div>
+        <div class="corner corner--tr"></div>
+        <div class="corner corner--bl"></div>
+        <div class="corner corner--br"></div>
+
+        <div class="content-wrapper">
+            <div class="logo-text">HDG</div>
+            <!--<div class="brand-dot"></div>-->
+        </div>
+
+        <div class="bottom-accent"></div>
+    </div>
+</body>
+
+</html>

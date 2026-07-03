@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HDG - פרסם כאן (1.91x1)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&family=Assistant:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #050510;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Heebo', sans-serif;
+        }
+
+        .ad-container {
+            width: 1910px;
+            height: 1000px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background: #0B1120;
+        }
+
+        /* ── Ambient gradient layers ── */
+        .ad-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 50% 70% at 35% 50%, rgba(37, 99, 235, 0.22) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 50% at 80% 30%, rgba(56, 189, 248, 0.10) 0%, transparent 60%),
+                radial-gradient(ellipse 35% 45% at 75% 80%, rgba(245, 158, 11, 0.07) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .ad-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(100deg, rgba(11, 17, 32, 0.3) 0%, transparent 40%, transparent 60%, rgba(11, 17, 32, 0.5) 100%);
+            z-index: 1;
+        }
+
+        /* ── Spotlight pulse ── */
+        .spotlight {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            top: 50%;
+            right: 30%;
+            transform: translate(50%, -50%);
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, rgba(56, 189, 248, 0.05) 40%, transparent 70%);
+            border-radius: 50%;
+            z-index: 2;
+            animation: spotlightPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes spotlightPulse {
+            0%, 100% { opacity: 0.7; transform: translate(50%, -50%) scale(1); }
+            50% { opacity: 1; transform: translate(50%, -50%) scale(1.08); }
+        }
+
+        /* ── Grid overlay ── */
+        .grid-overlay {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 2;
+        }
+
+        /* ── Content ── */
+        .content-wrapper {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 80px;
+            gap: 60px;
+        }
+
+        /* ── Right side: main text (RTL, so right = start) ── */
+        .text-block {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: right;
+        }
+
+        .brand-bar {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 40px;
+        }
+
+        .brand-mark {
+            font-family: 'Heebo', sans-serif;
+            font-weight: 900;
+            font-size: 42px;
+            color: #F1F5F9;
+            letter-spacing: 0.08em;
+            line-height: 1;
+        }
+
+        .brand-dot {
+            width: 10px;
+            height: 10px;
+            background: #2563EB;
+            border-radius: 50%;
+            box-shadow: 0 0 12px rgba(37, 99, 235, 0.6);
+        }
+
+        .headline {
+            font-family: 'Heebo', sans-serif;
+            font-weight: 900;
+            font-size: 200px;
+            color: #F1F5F9;
+            line-height: 0.88;
+            letter-spacing: -0.02em;
+            text-shadow:
+                0 0 60px rgba(37, 99, 235, 0.4),
+                0 0 120px rgba(37, 99, 235, 0.15);
+            margin-bottom: 30px;
+            white-space: nowrap;
+        }
+
+        .subline {
+            font-family: 'Assistant', sans-serif;
+            font-weight: 500;
+            font-size: 34px;
+            color: rgba(241, 245, 249, 0.5);
+            letter-spacing: 0.04em;
+        }
+
+        /* ── Left side: stats + CTA ── */
+        .action-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+            min-width: 420px;
+        }
+
+        /* ── Stat cards ── */
+        .stat-row {
+            display: flex;
+            gap: 30px;
+            direction: ltr;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 28px 32px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+            min-width: 170px;
+        }
+
+        .stat-value {
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 700;
+            font-size: 44px;
+            color: #F59E0B;
+            line-height: 1;
+            text-shadow: 0 0 24px rgba(245, 158, 11, 0.25);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-family: 'Assistant', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            color: rgba(241, 245, 249, 0.45);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        /* ── CTA ── */
+        .cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 22px 56px;
+            background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+            border-radius: 60px;
+            font-family: 'Heebo', sans-serif;
+            font-weight: 700;
+            font-size: 28px;
+            color: #fff;
+            letter-spacing: 0.02em;
+            box-shadow:
+                0 4px 24px rgba(37, 99, 235, 0.35),
+                0 0 60px rgba(37, 99, 235, 0.12);
+        }
+
+        .cta-arrow {
+            display: inline-block;
+            font-size: 24px;
+        }
+
+        /* ── Bottom accent ── */
+        .bottom-accent {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #2563EB 20%, #38BDF8 50%, #2563EB 80%, transparent);
+        }
+
+        /* ── Corner accents ── */
+        .corner {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            z-index: 10;
+        }
+
+        .corner--tl {
+            top: 30px;
+            right: 30px;
+            border-top: 2px solid rgba(37, 99, 235, 0.3);
+            border-right: 2px solid rgba(37, 99, 235, 0.3);
+        }
+
+        .corner--br {
+            bottom: 30px;
+            left: 30px;
+            border-bottom: 2px solid rgba(37, 99, 235, 0.3);
+            border-left: 2px solid rgba(37, 99, 235, 0.3);
+        }
+
+        /* ── Floating particles ── */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            z-index: 3;
+            opacity: 0;
+            animation: particleFloat 6s ease-in-out infinite;
+        }
+
+        .particle:nth-child(1) {
+            width: 6px; height: 6px;
+            background: #38BDF8;
+            top: 20%; left: 10%;
+            animation-delay: 0s;
+        }
+
+        .particle:nth-child(2) {
+            width: 4px; height: 4px;
+            background: #F59E0B;
+            top: 75%; right: 15%;
+            animation-delay: 2s;
+        }
+
+        .particle:nth-child(3) {
+            width: 5px; height: 5px;
+            background: #2563EB;
+            top: 12%; left: 60%;
+            animation-delay: 4s;
+        }
+
+        .particle:nth-child(4) {
+            width: 3px; height: 3px;
+            background: #38BDF8;
+            top: 65%; left: 45%;
+            animation-delay: 1s;
+        }
+
+        @keyframes particleFloat {
+            0%, 100% { opacity: 0; transform: translateY(0); }
+            20% { opacity: 0.6; }
+            50% { opacity: 0.8; transform: translateY(-20px); }
+            80% { opacity: 0.4; }
+        }
+
+        /* ── Divider line ── */
+        .divider {
+            position: absolute;
+            top: 15%;
+            bottom: 15%;
+            left: 50%;
+            width: 1px;
+            background: linear-gradient(180deg, transparent, rgba(37, 99, 235, 0.2) 30%, rgba(56, 189, 248, 0.15) 50%, rgba(37, 99, 235, 0.2) 70%, transparent);
+            z-index: 5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ad-container">
+        <div class="spotlight"></div>
+        <div class="grid-overlay"></div>
+
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+
+        <div class="corner corner--tl"></div>
+        <div class="corner corner--br"></div>
+        <div class="divider"></div>
+
+        <div class="content-wrapper">
+            <div class="text-block">
+                <div class="brand-bar">
+                    <div class="brand-dot"></div>
+                    <div class="brand-mark">HDG</div>
+                </div>
+                <div class="headline">פרסם כאן</div>
+                <div class="subline">הלקוחות שלך כבר בפייסבוק</div>
+            </div>
+
+            <div class="action-block">
+                <div class="stat-row">
+                    <div class="stat-card">
+                        <div class="stat-value">300%</div>
+                        <div class="stat-label">ROI</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">50K+</div>
+                        <div class="stat-label">LEADS</div>
+                    </div>
+                </div>
+                <div class="cta">
+                    <span class="cta-arrow">←</span>
+                    התחל עכשיו
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-accent"></div>
+    </div>
+</body>
+
+</html>

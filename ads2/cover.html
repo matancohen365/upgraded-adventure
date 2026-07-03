@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HDG - Facebook Page Cover</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&family=Assistant:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #050510;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Heebo', sans-serif;
+        }
+
+        /* Facebook page cover: 820×312 display → 1640×624 retina */
+        .cover-container {
+            width: 1640px;
+            height: 624px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0B1120;
+        }
+
+        /* ── Ambient gradients ── */
+        .cover-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 45% 90% at 50% 50%, rgba(37, 99, 235, 0.20) 0%, transparent 70%),
+                radial-gradient(ellipse 30% 60% at 10% 60%, rgba(56, 189, 248, 0.09) 0%, transparent 55%),
+                radial-gradient(ellipse 30% 60% at 90% 40%, rgba(56, 189, 248, 0.09) 0%, transparent 55%),
+                radial-gradient(ellipse 25% 50% at 85% 80%, rgba(245, 158, 11, 0.06) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .cover-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(11, 17, 32, 0.5) 0%, transparent 20%, transparent 80%, rgba(11, 17, 32, 0.5) 100%);
+            z-index: 1;
+        }
+
+        /* ── Spotlight ── */
+        .spotlight {
+            position: absolute;
+            width: 700px;
+            height: 700px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.14) 0%, rgba(56, 189, 248, 0.04) 45%, transparent 70%);
+            border-radius: 50%;
+            z-index: 2;
+            animation: spotlightPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes spotlightPulse {
+            0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.06); }
+        }
+
+        /* ── Grid overlay ── */
+        .grid-overlay {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+            background-size: 52px 52px;
+            z-index: 2;
+        }
+
+        /* ── Content ── */
+        .content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 80px;
+            padding: 0 100px;
+        }
+
+        /* ── Stat pill ── */
+        .stat-pill {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 22px 32px;
+            backdrop-filter: blur(8px);
+            min-width: 150px;
+        }
+
+        .stat-pill__value {
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 700;
+            font-size: 38px;
+            color: #F59E0B;
+            line-height: 1;
+            text-shadow: 0 0 20px rgba(245, 158, 11, 0.25);
+        }
+
+        .stat-pill__label {
+            font-family: 'Assistant', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            color: rgba(241, 245, 249, 0.4);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* ── Center brand block ── */
+        .brand-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .brand-name {
+            font-family: 'Heebo', sans-serif;
+            font-weight: 900;
+            font-size: 160px;
+            color: #F1F5F9;
+            letter-spacing: 0.06em;
+            line-height: 1;
+            text-shadow:
+                0 0 50px rgba(37, 99, 235, 0.35),
+                0 0 100px rgba(37, 99, 235, 0.12);
+        }
+
+        .brand-tagline {
+            font-family: 'Assistant', sans-serif;
+            font-weight: 500;
+            font-size: 30px;
+            color: rgba(241, 245, 249, 0.45);
+            letter-spacing: 0.12em;
+        }
+
+        .brand-dot-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .brand-dot {
+            width: 8px;
+            height: 8px;
+            background: #2563EB;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
+        }
+
+        .brand-line {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.4), transparent);
+        }
+
+        /* ── Corner accents ── */
+        .corner {
+            position: absolute;
+            width: 36px;
+            height: 36px;
+            z-index: 10;
+        }
+
+        .corner--tl {
+            top: 24px;
+            right: 24px;
+            border-top: 2px solid rgba(37, 99, 235, 0.25);
+            border-right: 2px solid rgba(37, 99, 235, 0.25);
+        }
+
+        .corner--tr {
+            top: 24px;
+            left: 24px;
+            border-top: 2px solid rgba(37, 99, 235, 0.25);
+            border-left: 2px solid rgba(37, 99, 235, 0.25);
+        }
+
+        .corner--bl {
+            bottom: 24px;
+            right: 24px;
+            border-bottom: 2px solid rgba(37, 99, 235, 0.25);
+            border-right: 2px solid rgba(37, 99, 235, 0.25);
+        }
+
+        .corner--br {
+            bottom: 24px;
+            left: 24px;
+            border-bottom: 2px solid rgba(37, 99, 235, 0.25);
+            border-left: 2px solid rgba(37, 99, 235, 0.25);
+        }
+
+        /* ── Bottom accent ── */
+        .bottom-accent {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #2563EB 25%, #38BDF8 50%, #2563EB 75%, transparent);
+        }
+
+        /* ── Floating particles ── */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            z-index: 3;
+            opacity: 0;
+            animation: particleFloat 6s ease-in-out infinite;
+        }
+
+        .particle:nth-child(1) {
+            width: 5px; height: 5px;
+            background: #38BDF8;
+            top: 22%; left: 8%;
+            animation-delay: 0s;
+        }
+
+        .particle:nth-child(2) {
+            width: 4px; height: 4px;
+            background: #F59E0B;
+            top: 70%; right: 12%;
+            animation-delay: 2s;
+        }
+
+        .particle:nth-child(3) {
+            width: 5px; height: 5px;
+            background: #2563EB;
+            top: 15%; right: 25%;
+            animation-delay: 4s;
+        }
+
+        .particle:nth-child(4) {
+            width: 3px; height: 3px;
+            background: #38BDF8;
+            top: 75%; left: 30%;
+            animation-delay: 1s;
+        }
+
+        .particle:nth-child(5) {
+            width: 4px; height: 4px;
+            background: #F59E0B;
+            top: 30%; left: 70%;
+            animation-delay: 3s;
+        }
+
+        @keyframes particleFloat {
+            0%, 100% { opacity: 0; transform: translateY(0); }
+            20% { opacity: 0.5; }
+            50% { opacity: 0.7; transform: translateY(-16px); }
+            80% { opacity: 0.3; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cover-container">
+        <div class="spotlight"></div>
+        <div class="grid-overlay"></div>
+
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+
+        <div class="corner corner--tl"></div>
+        <div class="corner corner--tr"></div>
+        <div class="corner corner--bl"></div>
+        <div class="corner corner--br"></div>
+
+        <div class="content">
+            <div class="stat-pill" style="direction: ltr;">
+                <div class="stat-pill__value">300%</div>
+                <div class="stat-pill__label">ROI</div>
+            </div>
+
+            <div class="brand-block">
+                <div class="brand-name">HDG</div>
+                <div class="brand-dot-row">
+                    <div class="brand-line"></div>
+                    <div class="brand-dot"></div>
+                    <div class="brand-line"></div>
+                </div>
+                <div class="brand-tagline">פרסום דיגיטלי שמביא תוצאות</div>
+            </div>
+
+            <div class="stat-pill" style="direction: ltr;">
+                <div class="stat-pill__value">50K+</div>
+                <div class="stat-pill__label">LEADS</div>
+            </div>
+        </div>
+
+        <div class="bottom-accent"></div>
+    </div>
+</body>
+
+</html>
