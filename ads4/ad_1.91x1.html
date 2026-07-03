@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HDG - Performance Ad (1.91x1)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@900&family=IBM+Plex+Mono:wght@600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .ad-container {
+            width: 1910px;
+            height: 1000px;
+            position: relative;
+            overflow: hidden;
+            background: #E2FF00; /* High-visibility Neon Chartreuse */
+            color: #000000;
+            display: flex;
+        }
+
+        /* ── Grid/Ruler overlay ── */
+        .ruler-overlay {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(#000 2px, transparent 2px),
+                linear-gradient(90deg, #000 2px, transparent 2px);
+            background-size: 100px 100px;
+            opacity: 0.04;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* ── Left Side: Ticker Signature (RTL, so physical left = visual right if we use flex row, but we use flex row reverse or physical placement) ── */
+        .ad-container {
+            flex-direction: row; /* LTR structure for layout, RTL for text */
+        }
+
+        .sidebar {
+            width: 500px;
+            background: #000;
+            color: #E2FF00;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+            border-left: 10px solid #0038FF;
+        }
+
+        .vertical-ticker {
+            display: flex;
+            flex-direction: column;
+            white-space: nowrap;
+            animation: scrollVertical 15s linear infinite;
+        }
+
+        .ticker-text {
+            font-family: 'Heebo', sans-serif;
+            font-weight: 900;
+            font-size: 150px;
+            line-height: 1;
+            transform: rotate(-90deg);
+            padding: 50px 0;
+        }
+
+        @keyframes scrollVertical {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+
+        /* ── Main Content Area ── */
+        .content {
+            position: relative;
+            z-index: 10;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 80px 100px;
+            justify-content: space-between;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .brand-badge {
+            font-family: 'Heebo', sans-serif;
+            font-weight: 600;
+            font-size: 28px;
+            background: #000;
+            color: #E2FF00;
+            padding: 14px 28px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 60px;
+            direction: ltr;
+        }
+
+        .stat-block {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-family: 'Heebo', sans-serif;
+            font-weight: 600;
+            font-size: 70px;
+            line-height: 0.9;
+            letter-spacing: -0.05em;
+        }
+        
+        .stat-label {
+            font-family: 'Heebo', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-top: 8px;
+        }
+
+        /* Hero Copy */
+        .hero-block {
+            margin: auto 0;
+        }
+
+        .headline {
+            font-family: 'Heebo', sans-serif;
+            font-weight: 900;
+            font-size: 180px;
+            line-height: 0.9;
+            letter-spacing: -0.03em;
+            margin-bottom: 40px;
+        }
+
+        .subline {
+            font-family: 'Heebo', sans-serif;
+            font-weight: 600;
+            font-size: 38px;
+            background: #000;
+            color: #fff;
+            display: inline-block;
+            padding: 16px 32px;
+        }
+
+        /* Bottom Bar */
+        .bottom-bar {
+            display: flex;
+            justify-content: flex-end; /* Push CTA to edge */
+            align-items: flex-end;
+        }
+
+        /* High-contrast Action CTA */
+        .cta {
+            background: #0038FF; /* Electric Hyperlink Blue */
+            color: #FFF;
+            font-family: 'Heebo', sans-serif;
+            font-weight: 900;
+            font-size: 48px;
+            padding: 28px 56px;
+            display: inline-flex;
+            align-items: center;
+            gap: 24px;
+            box-shadow: -16px 16px 0px #000;
+            cursor: pointer;
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+
+        .cta:hover {
+            transform: translate(-4px, 4px);
+            box-shadow: -12px 12px 0px #000;
+        }
+
+        .cta-arrow {
+            font-size: 56px;
+            line-height: 0.5;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="ad-container">
+        
+        <div class="content">
+            <div class="ruler-overlay"></div>
+            
+            <div class="top-bar">
+                <div class="brand-badge">HDG Agency</div>
+                <div class="stats-row">
+                    <div class="stat-block">
+                        <div class="stat-number">+300%</div>
+                        <div class="stat-label">Avg ROI</div>
+                    </div>
+                    <div class="stat-block">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Leads Gen</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-block">
+                <div class="headline">יותר לידים.<br>פחות תירוצים.</div>
+                <div class="subline">אנחנו מביאים תוצאות, לא לייקים.</div>
+            </div>
+
+            <div class="bottom-bar">
+                <div class="cta">
+                    תביאו לי לקוחות
+                    <span class="cta-arrow">←</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Sidebar Ticker (Physical layout right side) -->
+        <div class="sidebar">
+            <div class="vertical-ticker">
+                <span class="ticker-text">RESULTS ONLY • RESULTS ONLY • </span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
