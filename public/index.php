@@ -929,7 +929,7 @@ footer {
     <div class="section-head center reveal">
       <div class="section-label" style="justify-content:center;">Pricing</div>
       <h2>Straightforward. No surprises.</h2>
-      <p>Fixed scope, fixed price. We work with a small number of clients at a time — so you get full attention, not a slice of an overextended team.</p>
+      <p>We work with a small number of clients at a time — so you get full attention, not a slice of an overextended team.</p>
     </div>
     <div class="pricing-grid">
       <div class="pricing-card reveal">
