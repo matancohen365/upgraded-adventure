@@ -29,6 +29,7 @@ final class SignupService
             'business_name' => trim((string) $data['businessName']),
             'category' => (string) $data['category'],
             'business_desc' => trim((string) $data['businessDesc']),
+            'business_phone' => trim((string) ($data['businessPhone'] ?? '')),
             'campaign_goal' => $campaignGoal,
             'target_phone' => $campaignGoal === 'calls' ? trim((string) ($data['targetPhone'] ?? '')) : null,
             'target_whatsapp' => $campaignGoal === 'whatsapp' ? trim((string) ($data['targetWhatsapp'] ?? '')) : null,

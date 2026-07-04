@@ -21,6 +21,11 @@ final class Validator
             $errors['businessName'] = 'נא להזין את שם העסק';
         }
 
+        $businessPhone = trim((string) ($data['businessPhone'] ?? ''));
+        if (!$this->isValidPhone($businessPhone)) {
+            $errors['businessPhone'] = 'נא להזין מספר טלפון תקין לעסק';
+        }
+
         $category = (string) ($data['category'] ?? '');
         if (!in_array($category, $this->config['allowed_categories'], true)) {
             $errors['category'] = 'נא לבחור תחום פעילות';

@@ -41,6 +41,7 @@ try {
         'step_reached'    => (int) ($payload['stepReached'] ?? 1),
         'trigger'         => (string) ($payload['trigger'] ?? 'unknown'),
         'business_name'   => trim((string) ($payload['businessName'] ?? '')),
+        'business_phone'  => trim((string) ($payload['businessPhone'] ?? '')),
         'category'        => (string) ($payload['category'] ?? ''),
         'business_desc'   => trim((string) ($payload['businessDesc'] ?? '')),
         'campaign_goal'   => (string) ($payload['campaignGoal'] ?? ''),

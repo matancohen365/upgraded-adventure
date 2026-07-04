@@ -666,6 +666,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
 
               <div class="field-group">
+                <label class="field-label" for="businessPhone">טלפון העסק <span class="req">*</span></label>
+                <input class="field-input" type="tel" id="businessPhone" placeholder="050-0000000" dir="ltr" style="text-align:right;" required>
+                <span class="field-error" id="businessPhone-error">נא להזין מספר טלפון תקין לעסק</span>
+                <span class="field-hint">מספר הטלפון הראשי של העסק — לצרכי קשר ואימות.</span>
+              </div>
+
+              <div class="field-group">
                 <label class="field-label">תחום הפעילות של העסק <span class="req">*</span></label>
                 <div class="category-grid" id="categoryGrid">
                   
@@ -1236,6 +1243,7 @@ document.addEventListener('DOMContentLoaded', function () {
       stepReached:    currentStep,
       trigger:        trigger || 'input',
       businessName:   (document.getElementById('businessName')  || {}).value || '',
+      businessPhone:  (document.getElementById('businessPhone') || {}).value || '',
       category:       catRadio  ? catRadio.value  : '',
       businessDesc:   (document.getElementById('businessDesc')  || {}).value || '',
       campaignGoal:   goalRadio ? goalRadio.value : '',
@@ -1293,6 +1301,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Input fields
   var businessNameInput = document.getElementById('businessName');
+  var businessPhoneInput = document.getElementById('businessPhone');
   var businessDescInput = document.getElementById('businessDesc');
   var targetPhone = document.getElementById('targetPhone');
   var targetWhatsapp = document.getElementById('targetWhatsapp');
@@ -1425,10 +1434,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (stepNum === 1) {
       var nameOk = businessNameInput.value.trim().length >= 2;
+      var bizPhoneOk = validatePhone(businessPhoneInput.value);
       var descOk = businessDescInput.value.trim().length >= 10;
       showFieldError('businessName', !nameOk);
+      showFieldError('businessPhone', !bizPhoneOk);
       showFieldError('businessDesc', !descOk);
-      isValid = nameOk && descOk;
+      isValid = nameOk && bizPhoneOk && descOk;
     } 
     else if (stepNum === 2) {
       var activeGoal = document.querySelector('input[name="campaignGoal"]:checked').value;
@@ -1695,6 +1706,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // ---- Partial-save hooks on all trackable fields ----
   // Step 1 text fields
   businessNameInput.addEventListener('input', function () { sendPartialSave('field_businessName'); });
+  businessPhoneInput.addEventListener('input', function () { sendPartialSave('field_businessPhone'); });
   businessDescInput.addEventListener('input', function () { sendPartialSave('field_businessDesc'); });
   document.querySelectorAll('input[name="category"]').forEach(function (r) {
     r.addEventListener('change', function () { sendPartialSave('field_category', true); });
@@ -1848,6 +1860,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function collectFormPayload() {
     return {
       businessName: businessNameInput.value.trim(),
+      businessPhone: businessPhoneInput.value.trim(),
       category: document.querySelector('input[name="category"]:checked').value,
       businessDesc: businessDescInput.value.trim(),
       campaignGoal: document.querySelector('input[name="campaignGoal"]:checked').value,

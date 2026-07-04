@@ -1061,10 +1061,11 @@ function showModal(data) {
         <div class="modal-grid">
             ${fieldHtml('שם העסק', data.business_name)}
             ${fieldHtml('קטגוריה', data.category)}
-            ${fullFieldHtml('תיאור', data.business_desc)}
+            ${fieldHtml('טלפון עסק', data.business_phone)}
             ${fieldHtml('מטרת קמפיין', data.campaign_goal)}
             ${fieldHtml('אזור', data.target_location)}
             ${fieldHtml('כתובת', data.local_address)}
+            ${fullFieldHtml('תיאור', data.business_desc)}
         </div>
 
         <div class="modal-section">פרטי לקוח</div>
@@ -1195,10 +1196,11 @@ function showPartialModal(data) {
         <div class="modal-grid">
             ${fieldHtml('שם העסק', data.business_name)}
             ${fieldHtml('קטגוריה', data.category)}
-            ${fullFieldHtml('תיאור', data.business_desc)}
+            ${fieldHtml('טלפון עסק', data.business_phone)}
             ${fieldHtml('מטרת קמפיין', data.campaign_goal)}
             ${fieldHtml('אזור', data.target_location)}
             ${fieldHtml('כתובת', data.local_address)}
+            ${fullFieldHtml('תיאור', data.business_desc)}
         </div>
 
         <div class="modal-section">פרטי לקוח (אם מולאו)</div>
