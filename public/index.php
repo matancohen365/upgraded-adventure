@@ -782,6 +782,7 @@ footer {
 </div>
 
 <!-- ===== SERVICES / OFFER ===== -->
+
 <section class="section offer-section" id="offer">
   <div class="wrap">
     <div class="section-head reveal">
@@ -800,7 +801,7 @@ footer {
         <p>We tear down your site's technical SEO, content architecture, performance, and conversion flows — then rebuild each lever with a concrete execution plan and measurable targets. You get a report no generic agency could produce, because we've actually run the same playbook before.</p>
         <div class="offer-metric">
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 9l3-3 2 2 3-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Fixed scope · $10K–25K per engagement
+          Fixed scope
         </div>
       </div>
       <div class="offer-card reveal">
@@ -813,7 +814,7 @@ footer {
         <p>For companies that want to maintain forward momentum. We embed as your growth engineering layer — ongoing technical SEO, AI-assisted content pipelines, and conversion optimization — with full transparency into what we're doing and why it's working.</p>
         <div class="offer-metric">
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 9l3-3 2 2 3-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          $5K–10K / month · minimum 3 months
+          minimum 3 months
         </div>
       </div>
     </div>
