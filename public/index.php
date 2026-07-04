@@ -935,8 +935,8 @@ footer {
       <div class="pricing-card reveal">
         <h3>Growth Audit</h3>
         <p>A complete technical and strategic audit of your site's growth infrastructure — delivered as a prioritized execution plan you can act on immediately.</p>
-        <div class="pricing-price">$10,000–25,000</div>
-        <div class="pricing-price-note">Fixed price · 4–8 week engagement</div>
+        <!--<div class="pricing-price">$10,000–25,000</div>-->
+        <div class="pricing-price-note">Fixed price · 4–8 week engagement</div>-->
         <ul class="pricing-features">
           <li class="pricing-feature">Full technical SEO crawl and analysis</li>
           <li class="pricing-feature">Content cluster gap analysis</li>
@@ -951,8 +951,8 @@ footer {
         <div class="pricing-badge">Most popular</div>
         <h3>Monthly Retainer</h3>
         <p>Ongoing growth engineering — we embed as your technical growth layer, executing month after month with full accountability to results.</p>
-        <div class="pricing-price">$5,000–10,000</div>
-        <div class="pricing-price-note">Per month · minimum 3-month commitment</div>
+        <!--<div class="pricing-price">$5,000–10,000</div>
+        <div class="pricing-price-note">Per month · minimum 3-month commitment</div>-->
         <ul class="pricing-features">
           <li class="pricing-feature">Everything in the audit, ongoing</li>
           <li class="pricing-feature">AI-assisted content pipeline build &amp; management</li>
