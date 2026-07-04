@@ -935,7 +935,7 @@ footer {
       <div class="pricing-card reveal">
         <h3>Growth Audit</h3>
         <p>A complete technical and strategic audit of your site's growth infrastructure — delivered as a prioritized execution plan you can act on immediately.</p>
-        <!--<div class="pricing-price">$10,000–25,000</div>-->
+        <!--<div class="pricing-price">$10,000–25,000</div>
         <div class="pricing-price-note">Fixed price · 4–8 week engagement</div>-->
         <ul class="pricing-features">
           <li class="pricing-feature">Full technical SEO crawl and analysis</li>
