@@ -987,11 +987,15 @@ footer {
       <h2>Let's look at your site together.</h2>
       <p>20 minutes. No pitch deck. Just a real conversation about where your traffic is stuck and what it would take to move it.</p>
       <div class="cta-actions">
+		<a href="mailto:hello@hdg.co.il" class="btn btn-primary" id="cta-main-btn">
+          Email us directly
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
         <!--<a href="/signup.php" class="btn btn-primary" id="cta-main-btn">
           Book a free 20-min call
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>-->
-        <a href="mailto:hello@hdg.co.il" class="btn btn-ghost" id="cta-email-btn">Email us directly</a>
+        </a>
+        <a href="mailto:hello@hdg.co.il" class="btn btn-ghost" id="cta-email-btn">Email us directly</a>-->
       </div>
       <p class="cta-footnote">Or reach us at <a href="mailto:hello@hdg.co.il">hello@hdg.co.il</a> &nbsp;·&nbsp; <a href="tel:+972584321777">058-432-1777</a></p>
     </div>
