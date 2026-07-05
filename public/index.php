@@ -986,7 +986,7 @@ footer {
       <div class="section-label" style="justify-content:center;">Get started</div>
       <h2>Let's look at your site together.</h2>
       <p>20 minutes. No pitch deck. Just a real conversation about where your traffic is stuck and what it would take to move it.</p>
-      <div class="cta-actions" style="padding-top:16px;">
+      <div class="cta-actions" style="padding-top:32px;">
         <a href="tel:+972584321777" class="btn btn-primary" id="cta-main-btn">
           Call us
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
